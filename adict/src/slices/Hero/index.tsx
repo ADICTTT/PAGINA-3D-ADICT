@@ -19,11 +19,15 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     >
       <div className="grid">
         <div className="grid h-screen place-items-center">
-          <PrismicRichText field={slice.primary.heading} />
+          <div className="grid auto-rows-min place-items-center text-center">
+            <h1 className="hero-header lg:text-[13rem] text-7xl font-black uppercase leading-[.8] text-orange-500 md:text-[9rem] lg;text-[13rem]">
+              <PrismicRichText field={slice.primary.heading} />
+            </h1>
           <PrismicRichText field={slice.primary.subheading} />
           <PrismicRichText field={slice.primary.body} />
           <PrismicNextLink field={slice.primary.button_link} />
           {slice.primary.button_text}
+          </div>
         </div>
 
         <div className="text-side relative z-[80] grid h-screen items-center gap-4 md:grid-cols-2">

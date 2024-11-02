@@ -9,6 +9,8 @@ import { useGSAP } from "@gsap/react"
 import { Bounded } from "@/components/Bounded";
 import Button from "@/components/Button";
 import { TextSplitter } from "@/components/TextSplitter";
+import Scene from "./Scene";
+import { View } from "@react-three/drei";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +26,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   useGSAP(() => {
     const introTl = gsap.timeline();
 
-    introTl.set(".hero", { opacity: 1 }).from(".hero-header-word", {
+    introTl
+    .set(".hero", { opacity: 1 })
+    .from(".hero-header-word", {
       scale: 3,
       opacity: 0,
       ease: "power4.in",
@@ -90,6 +94,10 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="hero"
     >
+      <View className="hero-scene pointer-events-none sticky
+      top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+        <Scene />
+      </View>
       <div className="grid">
         <div className="grid h-screen place-items-center">
           <div className="grid auto-rows-min place-items-center text-center">

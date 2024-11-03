@@ -1,18 +1,21 @@
 "use client";
 import { asText, Content } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage,} from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-"@prismicio/react"
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react" 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { View } from "@react-three/drei";
+
 import { Bounded } from "@/components/Bounded";
 import Button from "@/components/Button";
 import { TextSplitter } from "@/components/TextSplitter";
 import Scene from "./Scene";
-import { View } from "@react-three/drei";
+import { Bubbles } from "./Bubbles";
+import { useStore } from "@/hooks/useStore";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 /**
  * Props for `Hero`.
@@ -23,8 +26,15 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-  useGSAP(() => {
-    const introTl = gsap.timeline();
+  const ready = useStore((state) => state.ready);
+  const isDesktop = useMediaQuery("(min-width: 768px)", true);
+
+  useGSAP(
+    () => {
+      if (!ready && isDesktop) return;
+
+      const introTl = gsap.timeline();
+
 
     introTl
     .set(".hero", { opacity: 1 })
@@ -85,8 +95,8 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       opacity: 0,
     });
 
-  });
-
+  },{dependencies:[ready, isDesktop]},
+);
 
   return (
     <Bounded
@@ -94,10 +104,13 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="hero"
     >
-      <View className="hero-scene pointer-events-none sticky
-      top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
-        <Scene />
-      </View>
+      {isDesktop && (
+        <View className="hero-scene pointer-events-none sticky
+        top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+          <Scene />
+          <Bubbles count = {300} speed = {2} repeat = {true} />
+        </View>
+      )}
       <div className="grid">
         <div className="grid h-screen place-items-center">
           <div className="grid auto-rows-min place-items-center text-center">

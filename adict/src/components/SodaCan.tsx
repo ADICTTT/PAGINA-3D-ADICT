@@ -32,7 +32,7 @@ export function SodaCan({
   const { nodes } = useGLTF("/Soda-can.gltf");
 
   const labels = useTexture(flavorTextures);
-  
+
   // Fixes upside down labels
   labels.strawberryLemonade.flipY = false;
   labels.blackCherry.flipY = false;

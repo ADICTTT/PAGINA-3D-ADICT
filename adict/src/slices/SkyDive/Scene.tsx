@@ -19,12 +19,12 @@ type SkyDiveProps = {
 };
 
 export default function Scene({ sentence, flavor }: SkyDiveProps) {
-  const groupRef = useRef<THREE.Group>(null);
-  const canRef = useRef<THREE.Group>(null);
-  const cloud1Ref = useRef<THREE.Group>(null);
-  const cloud2Ref = useRef<THREE.Group>(null);
-  const cloudsRef = useRef<THREE.Group>(null);
-  const wordsRef = useRef<THREE.Group>(null);
+  const groupRef = useRef<THREE.Group>(null)
+  const canRef = useRef<THREE.Group>(null)
+  const cloud1Ref = useRef<THREE.Group>(null)
+  const cloud2Ref = useRef<THREE.Group>(null)
+  const cloudsRef = useRef<THREE.Group>(null)
+  const wordsRef = useRef<THREE.Group>(null)
 
   const ANGLE = 75 * (Math.PI / 180);
 

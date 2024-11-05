@@ -1,0 +1,31 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Forest"
+						}
+					}
+				]
+			},
+			"price_copy": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Laboris velit ea ipsum eiusmod in mollit excepteur dolore eu fugiat ad adipisicing nisi. Ut ipsum est labore et cupidatat anim. Irure incididunt incididunt eu consequat enim excepteur."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
